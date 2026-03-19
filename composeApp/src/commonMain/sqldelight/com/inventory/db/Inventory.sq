@@ -1,0 +1,22 @@
+CREATE TABLE InventoryItem (
+    id INTEGER NOT NULL PRIMARY KEY ,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    category TEXT NOT NULL,
+    price REAL NOT NULL
+);
+
+selectAllItems:
+SELECT * FROM InventoryItem;
+
+insertItem:
+INSERT INTO InventoryItem(name, quantity, category, price)
+VALUES (?, ?, ?, ?);
+
+updateItem:
+UPDATE InventoryItem
+SET name = ?, quantity = ?, category = ?, price = ?
+WHERE id = ?;
+
+deleteItem:
+DELETE FROM InventoryItem WHERE id = ?;
