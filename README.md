@@ -1,76 +1,41 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM).
+📦 InventoryKMP - Multiplatform Management System 🚀 Project Overview This project is a cross-platform Inventory Management application built using the Kotlin Multiplatform (KMP) ecosystem. It demonstrates shared business logic and UI components across Android, iOS, and Web platforms, ensuring a consistent user experience with minimal code duplication.
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+🛠️ Tech Stack Language: Kotlin
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+UI Framework: Compose Multiplatform (Shared UI)
 
-### Build and Run Android Application
+Database: SQLDelight for local persistence (SQLite)
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+Architecture: Clean Architecture with a dedicated Repository pattern
 
-### Build and Run Desktop (JVM) Application
+Build Tool: Gradle Kotlin DSL (fixed library versions)
 
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
+✨ Features CRUD Operations: Create, Read, Update, and Delete inventory items.
 
-### Build and Run Web Application
+Category Management: Organize items by categories.
 
-To build and run the development version of the web app, use the run configuration from the run widget
-in your IDE's toolbar or run it directly from the terminal:
-- for the Wasm target (faster, modern browsers):
-  - on macOS/Linux
-    ```shell
-    ./gradlew :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-  - on Windows
-    ```shell
-    .\gradlew.bat :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-- for the JS target (slower, supports older browsers):
-  - on macOS/Linux
-    ```shell
-    ./gradlew :composeApp:jsBrowserDevelopmentRun
-    ```
-  - on Windows
-    ```shell
-    .\gradlew.bat :composeApp:jsBrowserDevelopmentRun
-    ```
+Live Search: Real-time filtering of items by name.
 
-### Build and Run iOS Application
+Centralized Theming: Unified color and typography system across all targets.
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+📁 Project Structure composeApp/commonMain: Contains the shared UI (Compose) and business logic.
 
----
+shared/sqldelight: Database schema definitions (.sq files).
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+composeApp/androidMain: Android-specific implementations and Driver Factory.
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
+composeApp/iosMain: iOS-specific SqlDriver configurations.
+
+🛠️ Setup & Installation Clone the repository: git clone [Your-Repo-Link]
+
+Open in Android Studio (Ladybug or later).
+
+Sync Gradle and ensure all fixed dependencies are resolved.
+
+Run the application:
+
+Android: Select composeApp and run.
+
+Web: Run ./gradlew :composeApp:wasmJsBrowserRun
+
+📝 Development Journey (Issue Log) Significant technical hurdles, including SQLDelight code generation issues and KMP-specific UI state management, have been documented in the Issue Log PDF included in this repository.
